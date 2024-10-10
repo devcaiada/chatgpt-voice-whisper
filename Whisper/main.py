@@ -8,23 +8,26 @@ from gtts import gTTS
 import simpleaudio as sa
 
 # Configura a chave da API da OpenAI
-os.environ['OPENAI_API_KEY'] = 'SUA_CHAVE_AQUI'
+os.environ['OPENAI_API_KEY'] = 'SUA CHAVE AQUI'
 language = 'pt'
+
 
 # Função para gravar áudio
 def record_audio(duration=5, sample_rate=44100, file_name='request_audio.wav'):
     print("Ouvindo...")
-    recording = sd.rec(int(duration * sample_rate), samplerate=sample_rate, channels=2)
+    recording = sd.rec(int(duration * sample_rate), samplerate=sample_rate, channels=1)  # Grava em mono
     sd.wait()  # Aguarda a gravação terminar
     write(file_name, sample_rate, np.int16(recording))  # Salva o áudio como arquivo WAV
     print(f"Áudio gravado e salvo como {file_name}")
     return file_name
+
 
 # Função para tocar o áudio gravado
 def play_audio(file_path):
     wave_obj = sa.WaveObject.from_wave_file(file_path)
     play_obj = wave_obj.play()
     play_obj.wait_done()  # Espera até que o áudio termine de tocar
+
 
 # Grava o áudio por 5 segundos
 record_file = record_audio()
@@ -38,7 +41,7 @@ print("Transcrição:", transcription)
 # Usa a API do OpenAI GPT para processar a transcrição
 openai.api_key = os.getenv('OPENAI_API_KEY')
 response = openai.ChatCompletion.create(
-    model="gpt-4",
+    model="gpt-3.5",
     messages=[{"role": "user", "content": transcription}]
 )
 

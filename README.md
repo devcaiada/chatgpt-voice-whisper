@@ -1,5 +1,11 @@
 # Conversando por Voz Com o ChatGPT Utilizando Whisper (OpenAI) e Python
 
+Vamos integrar o **ChatGPT** com o phyton utilizando o **whisper** para interagir através de comando de voz.
+
+Teremos como base o projeto elaborado em Collab: [Assistente de Voz](https://colab.research.google.com/drive/1rHGq5N-sbEGtZsNUiQFT8q60BhRbj99b?usp=sharing).
+
+
+
 ### 1. Gravação de áudio:
 
 - Substituímos o uso do JavaScript (navigator.mediaDevices) por sounddevice, que permite capturar áudio diretamente pelo microfone no PyCharm.
@@ -22,5 +28,9 @@
 
 ## Notas importantes:
 
+- **Whisper**: Para a instalação correta do whisper no Pycharm, utilize o seguinte comando:
+~~~ python
+pip install git+https://github.com/openai/whisper.git
+~~~
 - **Chave OpenAI**: Lembre-se de substituir 'SUA_CHAVE_AQUI' pela sua chave da API da OpenAI.
 - **Ambiente de execução**: Este código foi adaptado para rodar em um ambiente local (PyCharm). Ele não dependerá de APIs do navegador ou do Google Colab.
